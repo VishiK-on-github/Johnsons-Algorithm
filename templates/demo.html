@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Johnson's Algorithm Demo</title>
+        <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="../static/demo.js"></script>
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 div-form">
+                    <h1 class="mb-5 text-center">Johnson's Algorithm Demonstration</h1>
+                    <form method="POST" id="form">
+                        <h3 class="mb-4">Create Nodes</h3>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="nodeNum">Number of Nodes</label>
+                                <input type="number" name="nodeNum" id="nodeNum" class="form-control" min="2">
+                            </div>
+                        </div>
+                        <hr class="mb-4">
+                        <h3 class="mb-4">Add Edge &nbsp;<button class="btn btn-outline-dark" onclick="return createEdge()" style="border-radius: 20%;">+</button></h3>
+                        <span class="text-muted">*Weight Constraints*</span>
+                        <div class="row f-row">
+                            <div class="col-md-3 mb-3">
+                                <label for="">Source Node</label>
+                                <input type="number" name="" id="" class="form-control" min="0">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="">Destination Node</label>
+                                <input type="number" name="" id="" class="form-control" min="0">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="">Edge Weight</label>
+                                <input type="text" name="" id="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-3" id="submit-adj-matrix">
+                            <button class="btn btn-dark" style="border-radius: 8px;">Submit Adjacency Matrix</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
