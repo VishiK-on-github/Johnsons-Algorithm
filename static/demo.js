@@ -27,6 +27,8 @@ function createEdge() {
 
     // Setting class attribute according to bootstrap
     parentDiv.setAttribute("class", "row");
+    counter += 1;
+    parentDiv.setAttribute("id", counter);
 
     // Getting input divs which will be appended in parent div
     var sourceDiv = create("Source Node");
@@ -38,10 +40,27 @@ function createEdge() {
     parentDiv.appendChild(destinationDiv);
     parentDiv.appendChild(edgeDiv);
 
+    // Creating div element to hold the remove edge element
+    var removeButtonDiv = document.createElement("div");
+    removeButtonDiv.setAttribute("class", "col-md-3 mb-3");
+
+    // Adding a button to remove the edge
+    var removeButton = document.createElement("button");
+    removeButton.setAttribute("class", "btn btn-outline-dark");
+    removeButton.setAttribute("onclick", "return removeEdge(this)");
+    removeButton.innerHTML = "Remove Edge";
+    removeButton.style.position = "absolute";
+    removeButton.style.bottom = 0;
+
+    // Adding the remove edge button to its div
+    removeButtonDiv.appendChild(removeButton);
+
+    // Adding the div containing remove edge button to parent div
+    parentDiv.appendChild(removeButtonDiv);
+
     // Appending the parentDiv before prependDiv inside the encompassing 
     // div whose id="form"
     getDiv.insertBefore(parentDiv, prependDiv);
-    counter += 1;
     alert("New edge added !");
     return false;
 }
@@ -55,7 +74,6 @@ function create(labelText) {
     // Creating a label with passed text
     var Label = document.createElement("label");
     Label.innerHTML = labelText;
-    //Label.setAttribute("for", "<id>");
 
     // Creating a input field
     var Field = document.createElement("input");
@@ -72,8 +90,26 @@ function create(labelText) {
     // Setting field attribute class to the bootstrap class
     // Maybe possible if condition to separate source destination weight field 
     Field.setAttribute("class", "form-control");
-    //Field.setAttribute("name", "");
-    //Field.setAttribute("id", "");
+    
+    // Conditionally setting id and class attribute
+    if(labelText == "Source Node") {
+
+        Field.setAttribute("name", "source[]");
+        Label.setAttribute("for", `s-${counter}`);
+        Field.setAttribute("id", `s-${counter}`);
+    }
+    else if(labelText == "Destination Node") {
+
+        Field.setAttribute("name", "destination[]");
+        Label.setAttribute("for", `d-${counter}`);
+        Field.setAttribute("id", `d-${counter}`);
+    }
+    else if(labelText == "Edge Weight") {
+
+        Field.setAttribute("name", "weight[]");
+        Label.setAttribute("for", `w-${counter}`);
+        Field.setAttribute("id", `w-${counter}`);
+    }
 
     // Appending the label and input field to the encompassing div
     makeDiv.appendChild(Label);
@@ -81,4 +117,19 @@ function create(labelText) {
 
     // returning the created div element
     return makeDiv;
+}
+
+function removeEdge(element) {
+
+    // Getting the id of div class row to remove it
+    var removeDivId = (element.parentNode).parentNode.id;
+    var removeDiv = document.getElementById(removeDivId);
+
+    // Removing the div from the DOM
+    removeDiv.remove();
+
+    // Alert message
+    alert("Edge Removed !");
+
+    return false;
 }
