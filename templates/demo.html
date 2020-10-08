@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Johnson's Algorithm Demo</title>
+        <title>Johnson's Algorithm Demonstration</title>
         <link rel="stylesheet" href="../static/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <script src="../static/demo.js"></script>
+        <script src="../static/validate.js"></script>
     </head>
     <body class="bg-light">
         <div class="container">
@@ -28,19 +29,19 @@
                         <div class="row f-row">
                             <div class="col-md-3 mb-3">
                                 <label for="">Source Node</label>
-                                <input type="number" name="" id="" class="form-control" min="0">
+                                <input type="number" name="source[]" class="form-control" min="0">
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="">Destination Node</label>
-                                <input type="number" name="" id="" class="form-control" min="0">
+                                <input type="number" name="destination[]" class="form-control" min="0">
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="">Edge Weight</label>
-                                <input type="text" name="" id="" class="form-control">
+                                <input type="text" name="weight[]" class="form-control">
                             </div>
                         </div>
                         <div class="mb-3" id="submit-adj-matrix">
-                            <button class="btn btn-dark" style="border-radius: 8px;">Submit Adjacency Matrix</button>
+                            <button type="button" class="btn btn-dark" style="border-radius: 8px;" onsubmit="return validateForm()">Submit Adjacency Matrix</button>
                         </div>
                     </form>
                 </div>
