@@ -15,12 +15,12 @@
             <div class="row">
                 <div class="col-md-12 div-form">
                     <h1 class="mb-5 text-center">Johnson's Algorithm Demonstration</h1>
-                    <form action="{{ url_for('demo') }}" method="POST" id="form">
+                    <form action="{{ url_for('demo') }}" method="POST" id="form" onsubmit="return validateForm()">
                         <h3 class="mb-4">Create Nodes</h3>
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="nodeNum">Number of Nodes</label>
-                                <input type="number" name="nodeNum" id="nodeNum" class="form-control" min="2">
+                                <input type="number" name="nodeNum" id="nodeNum" class="form-control" min="2" required>
                             </div>
                         </div>
                         <hr class="mb-4">
@@ -28,20 +28,20 @@
                         <span class="text-muted">*Weight Constraints*</span>
                         <div class="row f-row">
                             <div class="col-md-3 mb-3">
-                                <label for="">Source Node</label>
-                                <input type="number" name="source[]" class="form-control" min="0">
+                                <label for="s-1">Source Node</label>
+                                <input type="number" name="source[]" id="s-1" class="form-control" min="0">
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="">Destination Node</label>
-                                <input type="number" name="destination[]" class="form-control" min="0">
+                                <label for="d-1">Destination Node</label>
+                                <input type="number" name="destination[]" id="d-1" class="form-control" min="0">
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="">Edge Weight</label>
-                                <input type="text" name="weight[]" class="form-control">
+                                <label for="w-1">Edge Weight</label>
+                                <input type="text" name="weight[]" id="w-1" class="form-control">
                             </div>
                         </div>
                         <div class="mb-3" id="submit-adj-matrix">
-                            <button type="button" class="btn btn-dark" style="border-radius: 8px;" onsubmit="return validateForm()">Submit Adjacency Matrix</button>
+                            <button type="submit" class="btn btn-dark">Submit Adjacency Matrix</button>
                         </div>
                     </form>
                 </div>
