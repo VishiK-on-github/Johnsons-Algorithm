@@ -24,5 +24,5 @@ def demo():
     elif request.method == 'POST':
 
         # validation of the received form
-        # ren
+        # rendering the result html page for results using matplotlib images
         return render_template("result.html")
