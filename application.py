@@ -26,3 +26,9 @@ def demo():
         # validation of the received form
         # rendering the result html page for results using matplotlib images
         return render_template("result.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+
+    # Error page if invalid URL entered
+    return render_template("error.html"), 404
