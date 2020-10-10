@@ -116,7 +116,7 @@ function validEdgeWeight(weightArr) {
 
     for(var i=0; i < weightArr.length; i++) {
 
-        if((weightArr[i].value == "infinity")||(Number.isInteger(weightArr[i].value))) {
+        if((weightArr[i].value == "infinity")||(Number.isInteger(parseInt(weightArr[i].value)))) {
 
             weightArr[i].style.border = "2px solid lightgreen";
         }
