@@ -19,9 +19,9 @@ pos = nx.spring_layout(G)  # positions for all nodes
 nx.draw_networkx_nodes(G, pos, node_size=700)
 
 # edges
-nx.draw_networkx_edges(G, pos, edgelist=elarge, width=6)
+nx.draw_networkx_edges(G, pos, edgelist=elarge, width=2)
 nx.draw_networkx_edges(
-    G, pos, edgelist=esmall, width=6, alpha=0.5, edge_color="b", style="dashed"
+    G, pos, edgelist=esmall, width=2, alpha=0.5, edge_color="b", style="dashed"
 )
 
 # labels
