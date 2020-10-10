@@ -4,6 +4,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import numpy as np
 import math
+import johnsonsAlgorithm as JA
 
 # Creating the app to run
 app = Flask(__name__)
@@ -55,6 +56,9 @@ def demo():
         # Adding the values to the adjacency matrix
         for i, j, k in zip(source, destination, weights):
             adjMatrix[i, j] = k
+
+        # Passing the adjacency matrix to Johnson's Algorithm
+        JA.Johnson(adjMatrix)
 
         # rendering the result html page for results using matplotlib images
         return render_template("result.html")
