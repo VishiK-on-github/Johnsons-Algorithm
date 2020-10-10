@@ -30,14 +30,14 @@ def adj(u, AdjMatrix):
 
     return AdjList
 
-def update(mainTable, graph, u, Q):
+"""def update(mainTable, graph, u, Q):
 
     for v in adj(u, graph):
         if v in Q and mainTable[v][0] > mainTable[u][0] + graph[u, v]:
                 mainTable[v][0] = mainTable[u][0] + graph[u, v]
                 mainTable[v][1] = u
 
-    return mainTable
+    return mainTable"""
 
 
 def Dijkstra(graph, source):
@@ -67,22 +67,19 @@ def Dijkstra(graph, source):
     # Setting of source
     mainTable[source][0] = 0
     mainTable[source][1] = None
-    Q.remove(source)
-
-    # Updating the table
-    mainTable = update(mainTable, graph, source, Q)
 
     # Repeating till visited set is empty
     while len(Q) != 0:
 
         u = ExtractMin(Q, mainTable)
-        if u is None:
+        if u == None:
             break
         Q.remove(u)
-        mainTable = update(mainTable, graph, u, Q)
+        for v in adj(u, graph):
+            if v in Q and mainTable[v][0] > mainTable[u][0] + graph[u, v]:
+                    mainTable[v][0] = mainTable[u][0] + graph[u, v]
+                    mainTable[v][1] = u
 
-    print(mainTable)
 
-"""graph = np.array([[0, 10, 5, math.inf], [math.inf, 0, 3, math.inf], [math.inf, 4, 0, 1], [math.inf, 2, math.inf, 0]])
-
-Dijkstra(graph, 0)"""
+    # Returning the table to after graph Dijkstars ran sucessfully 
+    return mainTable
