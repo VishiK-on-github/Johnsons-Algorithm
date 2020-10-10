@@ -3,9 +3,81 @@
 # Importing dependencies
 import numpy as np
 import math
-from Testing import testDijkstra as td
 
-# Code Done
+def ExtractMin(Q, mainTable):
+
+    """Gives vertex in Q (Unvisited Set) minimum distance value"""
+
+    minD = math.inf
+    minE = None
+
+    for i in Q:
+        if mainTable[i][0] < minD:
+
+            minD = mainTable[i][0]
+            minE = i
+
+    return minE
+
+def adj(u, AdjMatrix):
+
+    """Gives elements adjacent to current vertex"""
+
+    AdjList = []
+
+    for i in range(0, len(AdjMatrix[u])):
+
+        if AdjMatrix[u][i] >= 0:
+
+            AdjList.append(i)
+
+    return AdjList
+
+def Dijkstra(graph, source):
+
+    """Code for implementing Dijkstra's Algorithm"""
+
+    # Storing number of vertices
+    numVertices = len(graph)
+
+    # Table to store computed vertices
+    mainTable = []
+    Q = set()
+
+    for v in range(0, numVertices):
+
+        mTow = []
+        Q.add(v)
+
+        # Storing distance
+        mTow.append(math.inf)
+        # Parent
+        mTow.append(None)
+
+        # Adding the entity to Dijkstra's table
+        mainTable.append(mTow)
+
+    # Setting of source
+    mainTable[source][0] = 0
+    mainTable[source][1] = None
+
+    # Repeating till visited set is empty
+    while len(Q) != 0:
+
+        u = ExtractMin(Q, mainTable)
+        if u == None:
+            break
+        Q.remove(u)
+        for v in adj(u, graph):
+            if v in Q and mainTable[v][0] > mainTable[u][0] + graph[u, v]:
+                    mainTable[v][0] = mainTable[u][0] + graph[u, v]
+                    mainTable[v][1] = u
+
+
+    # Returning the table to after graph Dijkstars ran sucessfully 
+    #return mainTable
+    print(mainTable)
+
 def BellmanFord(edges, graph):
 
     """Code for running Bellman-Ford"""
@@ -34,7 +106,6 @@ def BellmanFord(edges, graph):
     # Returning reweighted graph
     return dist[0:num]
 
-# Code done
 def Johnson(graph):
 
     """Code for running Johnson's"""
@@ -53,7 +124,7 @@ def Johnson(graph):
     reweightFactor = BellmanFord(edges, graph)
 
     # Creating an adjacency matrix with all entries as zero
-    newGraph = np.zeros([len(graph), len(graph)], dtype=int)
+    newGraph = np.zeros([len(graph), len(graph)])
 
     for i in range(len(graph)):
         for j in range(len(graph)):
@@ -63,12 +134,12 @@ def Johnson(graph):
                 newGraph[i, j] = graph[i, j] + reweightFactor[i] - reweightFactor[j]
 
     # Non-negative weighted graph output
-    print("New Graph : ", newGraph)
+    #print("New Graph : ", newGraph)
 
     # Running Djiktras Algorithm by taking each of the vertices as source vertex
     for source in range(len(graph)):
         # Displaying method
-        td.Dijkstra(newGraph, source)
+        Dijkstra(newGraph, source)
 
 def main():
 
@@ -87,19 +158,7 @@ def main():
         vertexIndex[i] = verName"""
 
     # Testing adjacency matrix
-    graph = np.array([[0, -5, 2, 3], [0, 0, 4, 0], [0, 0, 0, 1], [0, 0, 0, 0]])
-
-    # To get the adjacency matrix
-    """adjMatrix = np.zeros([numVertex, numVertex], dtype=int)"""
-
-    # For building custom user input
-    """for i in range(numVertex):
-        for j in range(numVertex):
-
-            if i != j:
-                weight = int(input(f"Enter distance from {i} to {j} : "))
-                adjMatrix[i, j] = weight"""
-
+    graph = np.array([[math.inf,3,8,math.inf,-4], [math.inf,math.inf,math.inf,1,7], [math.inf,4,math.inf,math.inf,math.inf], [2,math.inf,-5,math.inf,math.inf], [math.inf,math.inf,math.inf,6,math.inf]])
 
     # Calling the Johnsons method
     Johnson(graph)
