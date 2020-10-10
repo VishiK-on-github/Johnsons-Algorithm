@@ -75,7 +75,7 @@ def Dijkstra(graph, source):
 
 
     # Returning the table to after graph Dijkstars ran sucessfully 
-    #return mainTable
+    # returning mainTable
     print(mainTable)
 
 def BellmanFord(edges, graph):
@@ -138,30 +138,6 @@ def Johnson(graph):
 
     # Running Djiktras Algorithm by taking each of the vertices as source vertex
     for source in range(len(graph)):
+        
         # Displaying method
         Dijkstra(newGraph, source)
-
-def main():
-
-    """Driver Code"""
-
-    # Dictionary to store names of the vertices
-    """vertexIndex = {}
-
-    # Enter the number of vertices
-    numVertex = int(input("Enter the total number of vertices in the graph : "))
-
-    # To get names of the vertices
-    for i in range(0, numVertex):
-
-        verName = input(f"Enter the name of {i + 1} vertex : ")
-        vertexIndex[i] = verName"""
-
-    # Testing adjacency matrix
-    graph = np.array([[math.inf,3,8,math.inf,-4], [math.inf,math.inf,math.inf,1,7], [math.inf,4,math.inf,math.inf,math.inf], [2,math.inf,-5,math.inf,math.inf], [math.inf,math.inf,math.inf,6,math.inf]])
-
-    # Calling the Johnsons method
-    Johnson(graph)
-
-if __name__ == "__main__":
-    main()
