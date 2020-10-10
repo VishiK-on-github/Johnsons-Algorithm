@@ -25,25 +25,37 @@ def demo():
     # File has been validated and needed to be processed
     elif request.method == 'POST':
         
-        #Extracting data from demo page
-        num=int(request.form.get("nodeNum"))
-        source=request.form.getlist("source[]")
-        source = list(map(int, source))
-        destination=request.form.getlist("destination[]")
-        destination = list(map(int, destination))
-        weights=request.form.getlist("weight[]")
-        for i,j in enumerate(weights):
-            if(j=="infinity"):
-                weights[i]=math.inf
-        weights = list(map(int, weights))
+        # Extracting data from demo page
+        num = int(request.form.get("nodeNum"))
 
-        #Creating adjacency matrix from extracted data
-        adjMatrix = np.zeros([num, num], dtype=int)
-        for i, j,k in zip(source, destination,weights):
-            adjMatrix[i, j] =k 
-        print(adjMatrix)
-        print(weights)
-        # validation of the received form
+        # Getting source nodes
+        source = request.form.getlist("source[]")
+        source = list(map(int, source))
+
+        # Getting destination nodes
+        destination = request.form.getlist("destination[]")
+        destination = list(map(int, destination))
+
+        # Getting weights for source, destination pair
+        weights = request.form.getlist("weight[]")
+
+        # Enumerating to modify the data 
+        for i, j in enumerate(weights):
+
+            if (j == "infinity"):
+
+                # Converting "infinity" to math.inf
+                weights[i] = math.inf
+                
+        weights = list(map(float, weights))
+
+        # Creating adjacency matrix from extracted data
+        adjMatrix = np.full([num, num], math.inf)
+
+        # Adding the values to the adjacency matrix
+        for i, j, k in zip(source, destination, weights):
+            adjMatrix[i, j] = k
+
         # rendering the result html page for results using matplotlib images
         return render_template("result.html")
 
