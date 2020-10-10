@@ -2,6 +2,8 @@
 
 # Importing dependencies
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+import numpy as np
+import math
 
 # Creating the app to run
 app = Flask(__name__)
@@ -22,7 +24,25 @@ def demo():
 
     # File has been validated and needed to be processed
     elif request.method == 'POST':
+        
+        #Extracting data from demo page
+        num=int(request.form.get("nodeNum"))
+        source=request.form.getlist("source[]")
+        source = list(map(int, source))
+        destination=request.form.getlist("destination[]")
+        destination = list(map(int, destination))
+        weights=request.form.getlist("weight[]")
+        for i,j in enumerate(weights):
+            if(j=="infinity"):
+                weights[i]=math.inf
+        weights = list(map(int, weights))
 
+        #Creating adjacency matrix from extracted data
+        adjMatrix = np.zeros([num, num], dtype=int)
+        for i, j,k in zip(source, destination,weights):
+            adjMatrix[i, j] =k 
+        print(adjMatrix)
+        print(weights)
         # validation of the received form
         # rendering the result html page for results using matplotlib images
         return render_template("result.html")
