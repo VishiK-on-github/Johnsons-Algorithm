@@ -65,7 +65,7 @@ function validSourceDestination(sourceArr, destinationArr, maxVal) {
 
     for(var i=0; i < sourceArr.length; i++) {
 
-        if(sourceArr[i].value != destinationArr[i].value) {
+        if(parseInt(sourceArr[i].value) != parseInt(destinationArr[i].value)) {
 
             if((Number.isInteger(parseInt(sourceArr[i].value)))&&(parseInt(sourceArr[i].value) < maxVal)) {
 
