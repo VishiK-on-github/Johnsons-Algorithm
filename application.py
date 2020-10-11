@@ -60,7 +60,7 @@ def demo():
             adjMatrix[i, j] = k
 
         #Displaying Original graph
-        vis.build_graph(num,adjMatrix,"C:/Users/activ/Desktop/johnsons_algo/images/OG_Graph.png")
+        vis.build_graph(num, adjMatrix, "../Johnsons-Algorithm/images/OG_graph.png")
 
         # Passing the adjacency matrix to Johnson's Algorithm
         JA.Johnson(adjMatrix)
