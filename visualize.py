@@ -20,7 +20,7 @@ def build_graph(n, adjMatrix, location):
     # Adding edges to graph
     for i in range(length):
         for j in range(length):
-            
+
             if(adjMatrix[i,j] == math.inf):
                 continue
             G.add_edge(i, j, weight=adjMatrix[i, j])
@@ -34,6 +34,6 @@ def build_graph(n, adjMatrix, location):
     labels = nx.get_edge_attributes(G, 'weight')
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
     plt.savefig(location, format="PNG")
-    plt.show()
+    # plt.show()
 
 
