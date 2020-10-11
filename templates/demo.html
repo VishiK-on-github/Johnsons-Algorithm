@@ -18,6 +18,7 @@
                     <form id="form" onsubmit="return validateForm()" action="{{ url_for('demo') }}" method="POST">
                         <h3 class="mb-4">Create Nodes</h3>
                         <div class="row">
+                            <!-- Field to input the number of nodes -->
                             <div class="col-md-4 mb-3">
                                 <label for="nodeNum">Number of Nodes</label>
                                 <input type="number" name="nodeNum" id="nodeNum" class="form-control" min="2" required>
@@ -28,6 +29,7 @@
                             <button class="btn btn-outline-dark" onclick="return createEdge()" style="border-radius: 8px;">+</button>
                         </h3>
                         <span class="text-muted">
+                            <!-- Instructions to use the application -->
                             <h5>Instructions : </h5>
                             <ul>
                                 <li>The edges start from 0 to (number of nodes - 1).</li>
@@ -36,6 +38,7 @@
                             </ul>
                         </span>
                         <div class="row f-row">
+                            <!-- non-deletable edge since graph must have atleast one edge -->
                             <div class="col-md-3 mb-3">
                                 <label for="s-1">Source Node</label>
                                 <input type="number" name="source[]" id="s-1" class="form-control" min="0">
@@ -49,7 +52,9 @@
                                 <input type="text" name="weight[]" id="w-1" class="form-control">
                             </div>
                         </div>
+                        <!-- Region where new edge divs will be added or removed from -->
                         <div class="mb-3" id="submit-adj-matrix">
+                            <!-- button to submit form -->
                             <button type="submit" class="btn btn-dark">Submit Adjacency Matrix</button>
                         </div>
                     </form>
