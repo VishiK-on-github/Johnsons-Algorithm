@@ -5,9 +5,8 @@ import matplotlib.pyplot as plt
 import math
 
 
-# Receieving number of vertices,adjacency matrix, and location of where image has to be stored
-def build_graph(n, adjMatrix, location):
-    
+
+def build_graph(n,adjMatrix,location):#Receieving number of vertices,adjacency matrix, and location of where image has to be stored
     # To generate graph with random vertices
     G = nx.lollipop_graph(n, 0)
 
@@ -20,11 +19,10 @@ def build_graph(n, adjMatrix, location):
     # Adding edges to graph
     for i in range(length):
         for j in range(length):
-
-            if(adjMatrix[i,j] == math.inf):
+            if(adjMatrix[i,j]==math.inf):
                 continue
             G.add_edge(i, j, weight=adjMatrix[i, j])
-            #print(adjMatrix[i, j])
+            print(adjMatrix[i, j])
 
     # Retrieving position of nodes
     pos = nx.random_layout(G)
@@ -34,6 +32,4 @@ def build_graph(n, adjMatrix, location):
     labels = nx.get_edge_attributes(G, 'weight')
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
     plt.savefig(location, format="PNG")
-    # plt.show()
-
-
+    #plt.show()
