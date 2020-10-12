@@ -20,5 +20,5 @@ def convert(mainTable,iteration):
     print(adjMatrix)
 
     #Sending to adjacency matric to visualize.py to create/save graphs as per the iteration
-    location="../Johnsons-Algorithm/images/soln{0}.png".format(iteration)
+    location="../Johnsons-Algorithm/static/images/soln{0}.png".format(iteration)
     vis.build_graph(num,adjMatrix,location)
