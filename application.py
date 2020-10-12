@@ -59,14 +59,27 @@ def demo():
         for i, j, k in zip(source, destination, weights):
             adjMatrix[i, j] = k
 
-        #Displaying Original graph
-        vis.build_graph(num, adjMatrix, "../Johnsons-Algorithm/images/OG_graph.png")
+        # Displaying Original graph
+        vis.build_graph(num, adjMatrix, "../Johnsons-Algorithm/static/images/OG_graph.png")
 
         # Passing the adjacency matrix to Johnson's Algorithm
         JA.Johnson(adjMatrix)
 
+        # Storing list of images addresses
+        addList = []
+
+        # Getting list of image address as per defined convention
+        for e in range(num):
+
+            temp = []
+            temp.append(e)
+            temp.append(f"images/soln{e}.png")
+
+            addList.append(temp)
+
+
         # rendering the result html page for results using matplotlib images
-        return render_template("result.html")
+        return render_template("result.html", image_name="images/OG_graph.png", outputs=addList)
 
 @app.errorhandler(404)
 def page_not_found(e):
