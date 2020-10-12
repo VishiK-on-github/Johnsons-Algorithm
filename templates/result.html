@@ -14,15 +14,15 @@
                 <div class="col-md-12 mb-3 sol-output">
                     <h1 class="mb-5 text-center">Johnson's Algorithm Result</h1>
                     <h3 class="mb-3">Original Graph</h3>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <!-- Append matplotlib image of starting adjacency matrix here -->
                         <img src="{{ url_for('static', filename=image_name) }}" alt="Original Graph" class="out-img">
                     </div>
-                    <hr class="mb-4">
-                    <h3 class="mb-3">Solution Graphs</h3>
+                    <hr class="mb-5">
+                    <h3 class="mb-5">Solution Graphs</h3>
                     {% for out in outputs %}
-                    <div class="mb-3">
-                        <h5 class="mb-3">Node {{out[0]}} as Source</h5>
+                    <div class="mb-5">
+                        <h5 class="mb-3">Source Node : Node {{out[0]}}</h5>
                         <!-- Output Images -->
                         <img src="{{ url_for('static', filename=out[1]) }}" alt="Output Image" class="out-img">
                     </div>
