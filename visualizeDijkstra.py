@@ -8,10 +8,10 @@ import math
 
 def convert(mainTable, iteration):
 
-   """Using this function to create adjacency matrices of shortest 
-   paths from all vertices (as source) returned by main JohnsonsAlgorithm program"""
+    """Using this function to create adjacency matrices of shortest 
+    paths from all vertices (as source) returned by main JohnsonsAlgorithm program"""
 
-    num = len(mainTable)
+    num=len(mainTable)
     adjMatrix = np.full([num, num], math.inf)
 
     # Since we send the table (mainTable) a table which consists of 
