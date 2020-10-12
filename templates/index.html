@@ -10,49 +10,80 @@
     </head>
     <body class="bg-light">
         <header>
-            <div class="navbar navbar-dark bg-dark text-light">
-                <a class="navbar-brand" href="#">
-                    <h3>Johnson's Algorithm</h3>
+            <div class="navbar navbar-dark bg-dark text-light justify-content-center">
+                <a class="navbar-brand navbar-center" href="#" style="text-align: center;">
+                    <h1>Johnson's Algorithm</h1>
                 </a>
-                <!-- edit -->
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsElements" aria-controls="navbarsElements" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse" id="navbarsElements">
-                    <div class="navbar-nav mr-auto">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a href="#introduction">Introduction</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- edit end -->
             </div>
         </header>
         <div class="container div-index">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="mb-3">
+                    <div class="mb-5">
                         <!-- Intro to Johnson's Algorithm/ Overview-->
+                        <h2 class="mb-3">Introduction</h2>
+                        <p class="text-custom">
+                            Johnson’s algorithm is used to find the shortest paths between all pairs of vertices in a directed graph.
+                            We convert negative edge weights into non-negative edge weights.
+                            It does this by using the Bellman-Ford algorithm to remove all negative weights.
+                            It then allows Dijkstra’s algorithm to be used on the new graph reweighted graph.
+                            Dijkstra’s algorithm is applied to new graph by taking each node as the source vertex.
+                        </p>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-5">
+                        <h2 class="mb-3">What is all-pairs shortest path problem ?</h2>
                         <!-- What is all pair shortest path problem -->
+                        <p class="text-custom">
+                            The all-pairs shortest path problem is used to determine the shortest graph 
+                            distances between every pair of vertices in a given graph.
+                            It aims to figure out the shortest path from each vertex (v) to every other vertex (u) in the graph.
+                        </p>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-5">
+                        <h2 class="mb-3">Why is this better ?</h2>
                         <!-- Why is this better ? -->
+                        <ul class="text-custom">
+                            <li>
+                                Johnson’s algorithm can be used to find shortest distance 
+                                between all pair of vertices even if the edge weights are negative.
+                            </li>
+                            <li>
+                                Johnson’s algorithm works better than Floyd-Warshall algorithm to find shortest path between 
+                                all pairs of vertices in cases where the graph is a sparse graph.
+                            </li>
+                        </ul>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-5">
+                        <h2 class="mb-3">Detailed explanation of Johnsohn's Algorithm</h2>
                         <!-- Detailed explanation of Johnsohns -->
+                        <!-- Time complexity -->
+                        <h4 class="mb-3">Time Complexity</h4>
+                        <p class="text-custom">
+
+                        </p>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-5">
+                        <h2 class="mb-3">Drawbacks</h2>
                         <!-- Drawbacks/negatives -->
+                        <!-- Negative cycles -->
+                        <ul class="text-custom">
+                            <li>The algorithm fails to give proper result in the presence of negative weight cycles.</li>
+                        </ul>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-5">
+                        <h2 class="mb-3">Summary</h2>
                         <!-- Summary -->
+                        <p class="text-custom">
+                            IDK
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+        <footer>
+            <div class="div-footer">
+                <!-- Created by text -->
+            </div>
+        </footer>
     </body>
 </html>
