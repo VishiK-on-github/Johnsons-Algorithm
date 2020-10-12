@@ -1,12 +1,16 @@
 # Importing dependencies
 import networkx as nx
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt
 import math
 
 
 
-def build_graph(n,adjMatrix,location):#Receieving number of vertices,adjacency matrix, and location of where image has to be stored
+def build_graph(n, adjMatrix, location):
+    
+    # Receieving number of vertices, adjacency matrix and location of where image has to be stored
     # To generate graph with random vertices
     G = nx.lollipop_graph(n, 0)
 
@@ -32,4 +36,5 @@ def build_graph(n,adjMatrix,location):#Receieving number of vertices,adjacency m
     labels = nx.get_edge_attributes(G, 'weight')
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
     plt.savefig(location, format="PNG")
-    #plt.show()
+    # plt.show()
+    plt.clf()
