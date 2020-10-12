@@ -16,12 +16,17 @@
                     <h3 class="mb-3">Original Graph</h3>
                     <div class="mb-3">
                         <!-- Append matplotlib image of starting adjacency matrix here -->
+                        <img src="{{ url_for('static', filename=image_name) }}" alt="Original Graph" class="out-img">
                     </div>
                     <hr class="mb-4">
                     <h3 class="mb-3">Solution Graphs</h3>
+                    {% for out in outputs %}
                     <div class="mb-3">
-                        <!-- #region -->
+                        <h5 class="mb-3">Node {{out[0]}} as Source</h5>
+                        <!-- Output Images -->
+                        <img src="{{ url_for('static', filename=out[1]) }}" alt="Output Image" class="out-img">
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
