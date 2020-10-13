@@ -24,8 +24,8 @@
   width: 500px;
 }
 
-/*.text-custom {
-    // To modify font on index page
-    font-size: 20px;
-}*/
+.text-custom {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 /*# sourceMappingURL=style.css.map */

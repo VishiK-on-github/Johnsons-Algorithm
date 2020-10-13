@@ -57,6 +57,115 @@
                         <h2 class="mb-3">Detailed explanation of Johnsohn's Algorithm</h2>
                         <!-- Detailed explanation of Johnsohns -->
                         <!-- Time complexity -->
+                        <p class="text-custom">
+                            We will start with the example. 
+                            Since this graph contains negative edges, Dijkstra’s algorithm cannot be applied to it yet. 
+                            To apply Dijkstra’s algorithm the edge links must be transformed to contain non-negative numbers.
+                        </p>
+                        <img src="../static/images/utility/egImage.png" alt="">
+                        <p class="text-custom">
+                            Johnson’s algorithm starts off by selecting a source vertex.
+                            The problem with choosing an existing vertex is that it might not be able to reach all the vertices in the graph.
+                            To guarantee that a single source vertex can reach all vertices in the graph, a new vertex is introduced.
+                            The new vertex, S, is introduced to all vertices in the graph.
+                            Although the weight from the source to each vertex doesn’t matter as long as they’re all consistent, by convention a weight of 0 is applied to each edge from the source.
+                        </p>
+                        <img src="../static/images/utility/ghostSource.png" alt="">
+                        <p class="text-custom">
+                            Johnson’s algorithm computes the shortest paths from vertex S to all the vertices on the graph.
+                            Johnson’s algorithm utilizes a single source shortest path algorithm to get the new values.
+                            Since there are negative edge weights in the directed graph, Bellman-Ford is the algorithm that’s used to process this computation.
+                            To begin, all the outbound edges are recorded in a table in alphabetical order.
+                        </p>
+                        <img src="../static/images/utility/initialImg.png" alt="">
+                        <p class="text-custom">
+                            The distance to each vertex is initialized to infinity except for the source vertex that’s initialized to 0.
+                        </p>
+                        <img src="../static/images/utility/initialize.png" alt="">
+                        <p class="text-custom">
+                            The edges are relaxed in order.
+                            Edges A-D, B-A, B-D, B-F, C-A, C-B, D-F, D-G, E-C, F-C, F-E, and G-E have current distances of infinity.
+                            If you add any number to infinity, the number is still infinity.
+                            Edges that start with the source vertex, S, have a distance of 0 to S, so distances from S can be computed.
+                            During the first iteration, edges S-A, S-B, S-C, S-D, S-E, S-F, and S-G are the only edges that matter.
+                            Looking at the graph, the distance to all vertices from the source is 0. The predecessor to all vertices after the first iteration is S.
+                        </p>
+                        <img src="../static/images/utility/i1.png" alt="">
+                        <p class="text-custom">
+                            Starting the second iteration, all the edges are relaxed again.
+                            Since I have a detailed article on the Bellman-Ford algorithm, we’ll go through the Bellman-Ford portion of this algorithm quickly.
+                        </p>
+                        <img src="../static/images/utility/c1.png" alt="">
+                        <p class="text-custom">
+                            The table below lists the shortest distances to each vertex after the second iteration.
+                        </p>
+                        <img src="../static/images/utility/i2.png" alt="">
+                        <p class="text-custom">
+                            You might have noticed that all distances that are computed from S directly will not change, 
+                            so during the third and subsequent iterations, edges from S will not be included in the table.
+                        </p>
+                        <img src="../static/images/utility/c2.png" alt="">
+                        <p class="text-custom">
+                            The table below lists the shortest distances to each vertex after the third iteration.
+                        </p>
+                        <img src="../static/images/utility/i3.png" alt="">
+                        <p class="text-custom">
+                            Bellman-Ford starts on the fourth iteration.
+                        </p>
+                        <img src="../static/images/utility/c3.png" alt="">
+                        <p class="text-custom">
+                            The table below lists the shortest distances to each vertex after the fourth iteration.
+                        </p>
+                        <img src="../static/images/utility/i4.png" alt="">
+                        <p class="text-custom">
+                            Bellman-Ford starts on the fifth iteration.
+                        </p>
+                        <img src="../static/images/utility/c4.png" alt="">
+                        <p class="text-custom">
+                            The table below lists the shortest distances to each vertex after the fifth iteration.
+                        </p>
+                        <img src="../static/images/utility/r2.png" alt="">
+                        <p class="text-custom">
+                            After the fifth iteration, there are no changes, so we can end the Bellman-Ford portion of Johnson’s algorithm. 
+                            The distance to each vertex from vertex S has been updated on the graph. Initially, 
+                            the shortest distance from S-A was 0, but after running the Bellman-Ford algorithm, the shortest distance to A is -9 via
+                            S-F-C-B-A.
+                        </p>
+                        <img src="../static/images/utility/final.png" alt="">
+                        <p class="text-custom">
+                            The source vertex is unnecessary for the remainder of this example, so we’ll drop the S and its edges.
+                        </p>
+                        <img src="../static/images/utility/f1.png" alt="">
+                        <p class="text-custom">
+                            Johnson’s algorithm then applies the following formula for the reweighting calculations:
+                        </p>
+                        <img src="../static/images/utility/rr.png" alt="">
+                        <p class="text-custom">
+                            In English, the new length (C’e) is equal to the original length (Ce) 
+                            plus the weight of its tail (pu) minus the weight of its head (pv). 
+                            Johnson’s algorithm does this for each of the edges.
+                        </p>
+                        <img src="../static/images/utility/r1.png" alt="">
+                        <img src="../static/images/utility/r2.png" alt="">
+                        <p class="text-custom">
+                            For A-D, Johnson’s algorithm starts with its original length of 11, adds the weight of the tail (A), 
+                            which the algorithm determined was -9, and subtracts the weight of the head (D), which the algorithm determined was -7.
+                        </p>
+                        <img src="../static/images/utility/reweighting.png" alt="">
+                        <p class="text-custom">
+                            The procedure is repeated for all the edges.
+                        </p>
+                        <img src="../static/images/utility/sreweight.png" alt="">
+                        <img src="../static/images/utility/r1.png" alt="">
+                        <p class="text-custom">
+                            The graph is updated with the new weights.
+                        </p>
+                        <img src="../static/images/utility/f1.png" alt="">
+                        <p class="text-custom">
+                            Now that all weights are non-negative, Dijkstra’s algorithm can be 
+                            applied to each vertex to compute all shortest paths. 
+                            See my article on Dijkstra’s Algorithm to see it in action.
+                        </p>
                         <h4 class="mb-3">Time Complexity</h4>
                         <p class="text-custom">
                             The main steps in the algorithm are Bellman Ford Algorithm called once and Dijkstra called V times.
@@ -74,13 +183,6 @@
                         <ul class="text-custom">
                             <li>The algorithm fails to give us proper result in the presence of negative weight cycles.</li>
                         </ul>
-                    </div>
-                    <div class="mb-5">
-                        <h2 class="mb-3">Summary</h2>
-                        <!-- Summary -->
-                        <p class="text-custom">
-                            IDK
-                        </p>
                     </div>
                 </div>
             </div>
