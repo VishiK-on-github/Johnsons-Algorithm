@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
-    <body class="bg-light">
+    <body>
         <header>
             <div class="navbar navbar-dark bg-dark text-light justify-content-center">
                 <a class="navbar-brand navbar-center" href="#" style="text-align: center;">
@@ -62,47 +62,45 @@
                             Since this graph contains negative edges, Dijkstra’s algorithm cannot be applied to it yet. 
                             To apply Dijkstra’s algorithm the edge links must be transformed to contain non-negative numbers.
                         </p>
+                        <!-- Change img-->
                         <img src="../static/images/utility/egImage.png" alt="">
                         <p class="text-custom">
-                            Johnson’s algorithm starts off by selecting a source vertex.
-                            The problem with choosing an existing vertex is that it might not be able to reach all the vertices in the graph.
+                            In Johnson’s algorithm we will start by selecting a source vertex.
+                            The problem with choosing an existing vertex is that it might not be able to reach all the vertices in 
+                            the graph since Johnsons algorithm is typically used for sparse matrices.
                             To guarantee that a single source vertex can reach all vertices in the graph, a new vertex is introduced.
                             The new vertex, S, is introduced to all vertices in the graph.
-                            Although the weight from the source to each vertex doesn’t matter as long as they’re all consistent, by convention a weight of 0 is applied to each edge from the source.
+                            The weight from the source to each vertex by convention is taken to be 0.
                         </p>
+                        <!-- Change img-->
                         <img src="../static/images/utility/ghostSource.png" alt="">
                         <p class="text-custom">
-                            Johnson’s algorithm computes the shortest paths from vertex S to all the vertices on the graph.
-                            Johnson’s algorithm utilizes a single source shortest path algorithm to get the new values.
-                            Since there are negative edge weights in the directed graph, Bellman-Ford is the algorithm that’s used to process this computation.
+                            Johnson’s algorithm will calculate the shortest paths from vertex S to all the vertices on the graph.
+                            Johnson’s algorithm will use a single source shortest path algorithm to get the new values.
+                            Since there are negative edge weights in this directed graph, Bellman-Ford is the algorithm that is used for this process.
                             To begin, all the outbound edges are recorded in a table in alphabetical order.
                         </p>
                         <img src="../static/images/utility/initialImg.png" alt="">
                         <p class="text-custom">
-                            The distance to each vertex is initialized to infinity except for the source vertex that’s initialized to 0.
+                            The distance to each vertex is set to infinity except for the source vertex that is set to 0 since we cannot have any loops.
                         </p>
                         <img src="../static/images/utility/initialize.png" alt="">
                         <p class="text-custom">
-                            The edges are relaxed in order.
-                            Edges A-D, B-A, B-D, B-F, C-A, C-B, D-F, D-G, E-C, F-C, F-E, and G-E have current distances of infinity.
+                            Edges A-D, B-A, B-D, B-F, C-A, C-B, D-F, D-G, E-C, F-C, F-E, and G-E have current distances set to infinity.
                             If you add any number to infinity, the number is still infinity.
-                            Edges that start with the source vertex, S, have a distance of 0 to S, so distances from S can be computed.
+                            Edges that start with the source vertex, S, have a distance of 0 to S, so distances from S can be calculated.
                             During the first iteration, edges S-A, S-B, S-C, S-D, S-E, S-F, and S-G are the only edges that matter.
                             Looking at the graph, the distance to all vertices from the source is 0. The predecessor to all vertices after the first iteration is S.
                         </p>
                         <img src="../static/images/utility/i1.png" alt="">
-                        <p class="text-custom">
-                            Starting the second iteration, all the edges are relaxed again.
-                            Since I have a detailed article on the Bellman-Ford algorithm, we’ll go through the Bellman-Ford portion of this algorithm quickly.
-                        </p>
                         <img src="../static/images/utility/c1.png" alt="">
                         <p class="text-custom">
                             The table below lists the shortest distances to each vertex after the second iteration.
                         </p>
                         <img src="../static/images/utility/i2.png" alt="">
                         <p class="text-custom">
-                            You might have noticed that all distances that are computed from S directly will not change, 
-                            so during the third and subsequent iterations, edges from S will not be included in the table.
+                            All distances that are calculated from S directly will not change, 
+                            so during subsequent iterations, edges from S will not be included in the table.
                         </p>
                         <img src="../static/images/utility/c2.png" alt="">
                         <p class="text-custom">
@@ -133,7 +131,7 @@
                         </p>
                         <img src="../static/images/utility/final.png" alt="">
                         <p class="text-custom">
-                            The source vertex is unnecessary for the remainder of this example, so we’ll drop the S and its edges.
+                            The source vertex is unnecessary for the remainder of this example, so we will remove it and its edges.
                         </p>
                         <img src="../static/images/utility/f1.png" alt="">
                         <p class="text-custom">
