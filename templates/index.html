@@ -59,7 +59,12 @@
                         <!-- Time complexity -->
                         <h4 class="mb-3">Time Complexity</h4>
                         <p class="text-custom">
-
+                            The main steps in the algorithm are Bellman Ford Algorithm called once and Dijkstra called V times.
+                            Where V is the number of vertices/nodes and E is the number of edges in the graph.
+                            Time complexity of Bellman Ford is <b>O(VE)</b> and time complexity of Dijkstra is <b>O(VLogV)</b>. 
+                            So overall time complexity is <b>O(V<sup>2</sup> log V + VE)</b>.
+                            The time complexity of Johnson's algorithm becomes same as Floyd Warshell when the graphs is complete (For a complete graph E = O(V<sup>2</sup>). 
+                            But for sparse graphs, the algorithm performs much better than Floyd Warshell.
                         </p>
                     </div>
                     <div class="mb-5">
@@ -67,7 +72,7 @@
                         <!-- Drawbacks/negatives -->
                         <!-- Negative cycles -->
                         <ul class="text-custom">
-                            <li>The algorithm fails to give proper result in the presence of negative weight cycles.</li>
+                            <li>The algorithm fails to give us proper result in the presence of negative weight cycles.</li>
                         </ul>
                     </div>
                     <div class="mb-5">
