@@ -21,12 +21,12 @@ def build_graph(n, adjMatrix, location):
     G = nx.DiGraph()
 
 
-    #Relabelling node names to alphabets
+    """#Relabelling node names to alphabets
     mapping={}
     char=65
     for i in range(n):
         mapping[i]=chr(char)
-        char+=1
+        char+=1"""
 
     #adjMatrix = np.array([[math.inf, -5, 2, 3], [math.inf, math.inf, 4, math.inf], [math.inf, math.inf, math.inf, 1], [math.inf, math.inf, math.inf, math.inf]])
     length = len(adjMatrix)
@@ -50,7 +50,7 @@ def build_graph(n, adjMatrix, location):
    
 
     # Drawing the finalised graph
-    nx.draw(G, pos,labels=mapping, with_labels=True, font_weight='bold')
+    nx.draw(G, pos, with_labels=True, font_weight='bold')
     labels = nx.get_edge_attributes(G, 'weight')
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 
