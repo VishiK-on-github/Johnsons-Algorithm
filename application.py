@@ -6,6 +6,7 @@ import numpy as np
 import math
 import johnsonsAlgorithm as JA
 import visualize as vis
+import visualizeDijkstra as vd
 
 # Creating the app to run
 app = Flask(__name__)
@@ -64,6 +65,13 @@ def demo():
 
         # Passing the adjacency matrix to Johnson's Algorithm
         JA.Johnson(adjMatrix)
+
+        
+        #for i in range(num):
+        #    mainTable=JA.Dijkstra(adjMatrix,i)
+        #    vd.convert(mainTable,i)
+
+        
 
         # Storing list of images addresses
         addList = []

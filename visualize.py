@@ -14,8 +14,19 @@ def build_graph(n, adjMatrix, location):
     # To generate graph with random vertices layout
     G = nx.lollipop_graph(n, 0)
 
+
+    
+
     # Creating a directed graph
     G = nx.DiGraph()
+
+
+    #Relabelling node names to alphabets
+    mapping={}
+    char=65
+    for i in range(n):
+        mapping[i]=chr(char)
+        char+=1
 
     #adjMatrix = np.array([[math.inf, -5, 2, 3], [math.inf, math.inf, 4, math.inf], [math.inf, math.inf, math.inf, 1], [math.inf, math.inf, math.inf, math.inf]])
     length = len(adjMatrix)
@@ -31,12 +42,21 @@ def build_graph(n, adjMatrix, location):
             #print(adjMatrix[i, j])
 
     # Retrieving position of nodes
-    pos = nx.random_layout(G)
+    #pos = nx.random_layout(G)
+    pos=nx.circular_layout(G)
+
+
+   
+   
 
     # Drawing the finalised graph
-    nx.draw(G, pos, with_labels=True, font_weight='bold')
+    nx.draw(G, pos,labels=mapping, with_labels=True, font_weight='bold')
     labels = nx.get_edge_attributes(G, 'weight')
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+
+    
+  
+
     plt.savefig(location, format="PNG")
     # plt.show()
     plt.clf()
