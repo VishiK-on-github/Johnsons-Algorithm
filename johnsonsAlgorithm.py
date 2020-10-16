@@ -97,7 +97,7 @@ def BellmanFord(edges, graph):
     for i in range(num):
         edges.append([num, i, 0])
 
-    # Running Bellmanford loop, number of vertices times
+    # Running Bellmanford loop, number of vertices - 1 times
     for i in range(num):
         for (source, destination, weight) in edges:
             
