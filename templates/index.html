@@ -21,7 +21,7 @@
         </header>
         <div class="container div-index">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 index-page">
                     <div class="mb-5">
                         <!-- Intro to Johnson's Algorithm/ Overview-->
                         <h2 class="mb-3">Introduction</h2>
@@ -60,6 +60,145 @@
                         <h2 class="mb-3">Detailed explanation of Johnson’s Algorithm</h2>
                         <!-- Detailed explanation of Johnsohns -->
                         <!-- Time complexity -->
+                        <img src="../static/images/utility/Problem.png" alt="Original Problem">
+                        <p class="text-custom">
+                            Since the example above has negative weights we must first convert it to non-negative weights.
+                            This conversion will be done by Bellman-Ford algorithm.
+                        </p>
+                        <h4 class="mb-3">Bellman-Ford Algorithm</h4>
+                        <p class="text-custom">
+                            Since we have a graph with negative edge weights we cannot use Dijkstra's algorithm just yet. 
+                            These negative edge weights must be converted to positive edge weights by means of Bellman-Ford
+                            algorithm. We will add an imaginary source 'S' to all the vertices such that the distance from 'S' 
+                            to all the vertices individually is 0. We must remember that the output of Bellman-Ford here 
+                            gives us the factor by which we must increment the weights to make them non-negative in order 
+                            to make it usable for Dijkstra's algorithm to be applied.
+                        </p>
+                        <p class="text-custom">
+                            Graph after adding imaginary source vertex 'S'.
+                        </p>
+                        <img src="../static/images/utility/gsource.png" alt="Imaginary Source" style="display:block; margin:0 auto;">
+                        <p class="text-custom">
+                            The working of Johnson’s algorithm in our implementation can be described as follows:
+                        </p>
+                        <div class="bellman-ford">
+                            <ol>
+                                <li>
+                                    We will first create a distance array with size one greater than the number of
+                                    vertices. We add the extra vertex for the imaginary S vertex. 
+                                    We initialize all the values to infinity except the source vertex which will be initialized to 0.
+                                </li>
+                                <li>
+                                    Now we will calculate the shortest distances. We will repeat the following steps for the number of vertices -  1 times. <br>
+                                    <img src="../static/images/utility/BellmanFordSnippet.png" alt="Bellman-Ford Code Snippet">
+                                </li>
+                                <li>
+                                    First we will iterate over the edges list which contains a list of all valid edges in source, 
+                                    destination and weight of the edge format. If the weight of destination is greater than weight
+                                    of source plus weight of edge (source, destination) then we will update the distance of the
+                                    destination to the smaller value.
+                                </li>
+                                <li>
+                                    After this computation is done we will return the the distance list to with all values except 
+                                    the last value to the Johnson’s algorithm to reweight all the edges. We don't send the last 
+                                    value because it contained the distance of the imaginary 'S' source node which was not actually a part of the graph.
+                                </li>
+                            </ol>
+                        </div>
+                        <p class="text-custom">
+                            We will now use the list of edges to reweight the graph. We will use the following formula:
+                        </p>
+                        <p class="text-custom text-center" style="font-size: 24px;">
+                            weight[i, j] <sub>new</sub> = weight[i, j] <sub>old</sub> + dist[i] - dist[j]
+                        </p>
+                        <p class="text-custom">
+                            Where: <br>
+                            weight[i, j] <sub>new</sub> : It is the new edge weight between vertex i and j. After reweighting the old edge weight.<br>
+                            weight[i, j] <sub>old</sub> : It is the old edge weight between vertex i and j. <br>
+                            dist[i], dist[j] : The factor of weight computed from Bellman-Ford for vertex i , j which is contained in edges list.
+                        </p>
+                        <p class="text-custom">
+                            The graph after the weights have been reweighted. 
+                            The resultant graph has no non-negative weights. 
+                            Also the imaginary source vertex 'S' has also been removed.
+                        </p>
+                        <img src="../static/images/utility/img0.png" alt="" style="display:block; margin:0 auto;">
+                        <h4 class="mb-3">Dijkstra’s Algorithm</h4>
+                        <p class="text-custom">
+                            Dijkstra's algorithm is used to find the shortest path from a single source to all the other vertices 
+                            in the graph which are reachable. We have computed the adjacency matrix after reweighting the original 
+                            graph to give us the non-negative weights.
+                        </p>
+                        <p class="text-custom">
+                            The working of Dijkstra’s algorithm in our implementation can be described as follows:
+                        </p>
+                        <div class="dijkstra">
+                            <ol>
+                                <li>
+                                    We will first construct a table similar to ones we make in Prim’s algorithm. 
+                                    This table will be a list of lists where the index of the element represents 
+                                    the vertex number of the graph and the list within the list the first index 
+                                    points to the weight computed from the source node and the second index points
+                                     to the parent element of the current index.
+                                </li>
+                                <li>
+                                    We will also construct a list Q which will consist of the items which have not yet been visited.
+                                </li>
+                                <li>
+                                    We will initialize all the distances to infinity and the parent nodes will be initialized to none.
+                                </li>
+                                <li>
+                                    We will include all the vertices in the unvisited set Q initially.
+                                </li>
+                                <li>
+                                    We set the distance of the source node to zero since the distance of the node from 
+                                    itself will always be zero.
+                                </li>
+                                <li>
+                                    We will run a loop till the unvisited set is not empty.
+                                </li>
+                                <li>
+                                    Within this loop we will extract the vertex which has the smallest 
+                                    distance in the main table provided the vertex is unvisited. Let this vertex be (u).
+                                </li>
+                                <li>
+                                    The edge extracted will be removed from the unvisited set. Vertex (u) will be removed.
+                                </li>
+                                <li>
+                                    We will then find the adjacent vertices to the extracted vertex (u) provided 
+                                    those vertices are in the unvisited set Q. Let the set of vertices be (V).
+                                </li>
+                                <li>
+                                    Now we will check if the vertices in (V) are follow the following constraint: <br>
+                                    <img src="../static/images/utility/dijkstrasSnippet.png" alt="Dijkstra's Code Snippet">
+                                </li>
+                                <li>
+                                    This condition basically implies that if the distance of vertex v in set (V) 
+                                    in the main table  is smaller than the distance of the possible parent vertex (u) 
+                                    from source node plus the distance between the current vertex and the vertex which 
+                                    can possibly be the current vertex’s parent then we will update the table to make 
+                                    make the parent node of the current node as (u) and its distance to be the sum of the two distance.
+                                </li>
+                            </ol>
+                        </div>
+                        <p class="text-custom">
+                            After running this until the unvisited set is empty we get the solution of the Dijkstra's 
+                            algorithm. The solution will be then later used for visualising. The results are as follows:
+                        </p>
+                        <h5 class="mb-3">Source Node : A</h5>
+                        <img src="../static/images/utility/img1.png" alt="Source A" style="display:block; margin:0 auto;">
+                        <h5 class="mb-3">Source Node : B</h5>
+                        <img src="../static/images/utility/img2.png" alt="Source B" style="display:block; margin:0 auto;">
+                        <h5 class="mb-3">Source Node : C</h5>
+                        <img src="../static/images/utility/img3.png" alt="Source C" style="display:block; margin:0 auto;">
+                        <h5 class="mb-3">Source Node : D</h5>
+                        <img src="../static/images/utility/img4.png" alt="Source D" style="display:block; margin:0 auto;">
+                        <h5 class="mb-3">Source Node : E</h5>
+                        <img src="../static/images/utility/img5.png" alt="Source E" style="display:block; margin:0 auto;">
+                        <h5 class="mb-3">Source Node : F</h5>
+                        <img src="../static/images/utility/img6.png" alt="Source F" style="display:block; margin:0 auto;">
+                        <h5 class="mb-3">Source Node : G</h5>
+                        <img src="../static/images/utility/img7.png" alt="Source G" style="display:block; margin:0 auto;">
                         <h4 class="mb-3">Time Complexity</h4>
                         <p class="text-custom">
                             The main steps in the algorithm are Bellman Ford Algorithm called once and Dijkstra called V times.
