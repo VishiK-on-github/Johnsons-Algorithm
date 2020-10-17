@@ -19,7 +19,7 @@
                 </div>
             </div>
         </header>
-        <div class="container div-index">
+        <div class="container div-index" style="font-family: times new roman;">
             <div class="row">
                 <div class="col-md-12 index-page">
                     <div class="mb-5">
@@ -54,6 +54,13 @@
                                 Johnson’s algorithm works better than Floyd-Warshall algorithm to find shortest path between 
                                 all pairs of vertices in cases where the graph is a sparse graph.
                             </li>
+                        </ul>
+                    </div>
+                    <div class="mb-5">
+                        <!-- Applications -->
+                        <h2 class="mb-3">Applications</h2>
+                        <ul>
+                            <li>Johnson’s algorithm can be used in gene networks where we have sparse matrices.</li>
                         </ul>
                     </div>
                     <div class="mb-5">
@@ -213,9 +220,12 @@
                         <h2 class="mb-3">Drawbacks</h2>
                         <!-- Drawbacks/negatives -->
                         <!-- Negative cycles -->
-                        <ul class="text-custom">
-                            <li>The algorithm fails to give us proper result in the presence of negative weight cycles.</li>
-                        </ul>
+                        <p class="text-custom">
+                            The algorithm fails to give us proper result in the presence of negative weight cycles. <br>
+                            <img src="../static/images/utility/negativeCycle.png" style="margin-left: 50px;"> <br>
+                            In this case we have a cycle. However the sum of the edge weights is negative hence there exists a negative weight cycle.
+                            The presence of negative weight cycles wont lead proper results.
+                        </p>
                     </div>
                 </div>
             </div>
